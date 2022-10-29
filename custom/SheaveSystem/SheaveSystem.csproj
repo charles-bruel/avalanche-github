@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;E:\dev\Modding\Snowtopia\Precompiled Scripts\SheaveSystem\bin\Release\netstandard2.0\SheaveSystem.dll&quot; &quot;E:\Steam\steamapps\common\Snowtopia\ModData\Assemblies&quot;&#xD;&#xA;copy &quot;E:\dev\Modding\Snowtopia\Precompiled Scripts\SheaveSystem\bin\Release\netstandard2.0\SheaveSystem.dll&quot; &quot;E:\dev\Modding\Snowtopia\Snowtopia Modloader\Assets\Chazzvader\Script&quot;" />
+  </Target>
+
+  <ItemGroup>
+    <Reference Include="PrecompiledExtensions">
+      <HintPath>..\PrecompiledExtensions\PrecompiledExtensions\bin\Release\netstandard2.0\PrecompiledExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

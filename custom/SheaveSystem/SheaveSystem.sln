@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheaveSystem", "SheaveSystem.csproj", "{FFD44824-3B51-43ED-ACB5-3020BA3E4878}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFD44824-3B51-43ED-ACB5-3020BA3E4878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD44824-3B51-43ED-ACB5-3020BA3E4878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD44824-3B51-43ED-ACB5-3020BA3E4878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD44824-3B51-43ED-ACB5-3020BA3E4878}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {169F4194-FEE2-4A8C-A5C9-FF71694BBF45}
+	EndGlobalSection
+EndGlobal
