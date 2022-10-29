@@ -2,6 +2,10 @@ bin/
 .vs/
 obj/
 Out/
+Out.meta
 TextMesh Pro/
 TextMesh Pro.meta
 Loader/Import/
+Bundles/
+Bundles.meta
+LazyUV_Buildings_Instancing.*
