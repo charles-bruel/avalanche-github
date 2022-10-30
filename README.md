@@ -6,6 +6,13 @@ Avalanche is a mod for Snowtopia, developed by @chazzvader (Charles Bruel), @!Te
 
 This project by its nature cannot have a fully up to date repo. Development is done in Unity, VS, VSCode, DNSpy, etc. and this is a compilation from various sources. Additionally, most of the code is changes to Assembly-CSharp.dll, which is means most of the code is intertwined and impossible to seperate from original game (proprietary) and so we cannot share it. Any code that exists is purely our own, does not contain reference to other internal elements nor is based on proprietary code.
 
+The folder structure is as follows:
+custom - code used by custom content in the game.
+devkit - tools and code for developing custom content.
+instanced - code for instanced rendering changes.
+pictures - pictures for this README.
+src - code integrated directly into the game. Incomplete for legal reasons.
+
 Screenshots:<br>
 Before:
 ![Alt text](https://github.com/charles-bruel/avalanche-github/blob/master/pictures/ps1o.PNG?raw=true)
