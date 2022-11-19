@@ -37,4 +37,4 @@ Turns, an entirely new feature added by avalanche. Based on snowflake lift at Br
 ![Alt text](https://github.com/charles-bruel/avalanche-github/blob/master/pictures/ps7.PNG?raw=true)
 And much more
 
-[To get the latest from Avalanche, join the discord server](https://discord.gg/zGZ3CV8jVJ)
+[For downloads, and to get the latest from Avalanche, join the discord server](https://discord.gg/zGZ3CV8jVJ)
