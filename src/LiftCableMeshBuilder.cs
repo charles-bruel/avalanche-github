@@ -118,27 +118,25 @@ public partial class LiftCableMeshBuilder
 		List<Vector3> list = new List<Vector3>(this.m_sections.Count);
 		for (int i = 0; i < this.m_sections.Count - 1; i++)
 		{
-			Vector3 vector = this.m_sections[i];
+			Vector3 vector5 = this.m_sections[i];
 			Vector3 vector2 = this.m_sections[i + 1];
-			Vector3 vector3 = vector - vector2;
-			Vector2 vector4 = vector3.ToHorizontal();
-			float f = Mathf.Atan((vector.y - vector2.y) / vector4.magnitude);
-			float f2 = Mathf.Atan2(vector4.y, vector4.x);
+			Vector2 vector3 = (vector5 - vector2).ToHorizontal();
+			float f = Mathf.Atan((vector5.y - vector2.y) / vector3.magnitude);
+			vector3.Normalize();
 			float y = Mathf.Cos(f) * offset.y;
 			float num = Mathf.Sin(f) * offset.y;
-			Vector3 a = new Vector3(num * vector3.y * Mathf.Cos(f2), y, num * vector3.z * Mathf.Sin(f2));
-			Vector3 b = new Vector3(-Mathf.Sin(f2) * offset.x, 0f, Mathf.Cos(f2) * offset.x);
-			Vector3 vector5 = a + b;
-			vector5 = new Vector3(vector5.x, vector5.y, vector5.z);
+			Vector3 a = new Vector3(num * vector3.x, y, num * vector3.y);
+			Vector3 b = new Vector3(-vector3.y * offset.x, 0f, vector3.x * offset.x);
+			Vector3 vector4 = a + b;
 			if (i == 0)
 			{
-				list.Add(this.m_sections[i] + vector5);
+				list.Add(this.m_sections[i] + vector4);
 			}
 			else
 			{
-				list[i] = (list[i] + this.m_sections[i] + vector5) / 2f;
+				list[i] = (list[i] + this.m_sections[i] + vector4) / 2f;
 			}
-			list.Add(this.m_sections[i + 1] + vector5);
+			list.Add(this.m_sections[i + 1] + vector4);
 		}
 		for (int j = 0; j < list.Count - 1; j++)
 		{
