@@ -31,56 +31,12 @@ public class TowerAssemblyScript : MonoBehaviour
 
     private SettingControl setting;
     private bool Initialized = false;
-    private int UpdateFrames = 3;
 
     private void Initialize()
     {
         setting = GetComponent<SettingControl>();
     }
 
-
-    void Update()
-    {
-        if (ContinuousUpdate)
-        {
-            Reset();
-            UpdateFrames = 3;
-        }
-
-        if (UpdateFrames <= 0)
-        {
-            return;
-        }
-        UpdateFrames--;
-
-        List<Sheave> AttachPoints = SheaveScriptLeft.CollectOpenSheaves();
-        List<Sheave> AttachPointsAlt = SheaveScriptRight.CollectOpenSheaves();
-        for (int i = 0; i < AttachPoints.Count; i++)
-        {
-            Vector3 tempRelPos = ((AttachPoints[i].TowerAttachPoint.position + AttachPointsAlt[AttachPoints.Count - 1 - i].TowerAttachPoint.position) / 2) - transform.position;
-
-            float theta = Mathf.Deg2Rad * (transform.rotation.eulerAngles.y);
-            float x = tempRelPos.x;
-            float y = tempRelPos.z;
-
-            //Thanks, wikipedia! https://en.wikipedia.org/wiki/Rotation_matrix
-            Vector3 relPos = new Vector3(x * Mathf.Cos(theta) - y * Mathf.Sin(theta), tempRelPos.y, x * Mathf.Sin(theta) + y * Mathf.Cos(theta));
-            Towers[i].transform.localPosition = relPos / transform.localScale.x;//Assuming uniform scaling
-            if (TiltTowers)
-            {
-                Towers[i].transform.localEulerAngles = new Vector3(0, 90, AttachPoints[i].transform.localEulerAngles.x + SheaveScriptLeft.RotationParent.transform.localEulerAngles.x * (HalfTilt ? 0.5f : 1));
-            }
-            else
-            {
-                Towers[i].transform.localEulerAngles = new Vector3(0, 90, 0);
-            }
-        }
-
-        foreach (TowerScript tower in Towers)
-        {
-            tower.Reset();
-        }
-    }
     public void Reset()
     {
         if (!Initialized) Initialize();
@@ -169,6 +125,40 @@ public class TowerAssemblyScript : MonoBehaviour
 
             SheavesParent.position += (transform.position - worldPosition);
         }
+
+        ResetFinalize();
+    }
+
+    private void ResetFinalize()
+    {
+        List<Sheave> AttachPoints = SheaveScriptLeft.CollectOpenSheaves();
+        List<Sheave> AttachPointsAlt = SheaveScriptRight.CollectOpenSheaves();
+        for (int i = 0; i < AttachPoints.Count; i++)
+        {
+            Vector3 tempRelPos = ((AttachPoints[i].TowerAttachPoint.position + AttachPointsAlt[AttachPoints.Count - 1 - i].TowerAttachPoint.position) / 2) - transform.position;
+
+            float theta = Mathf.Deg2Rad * (transform.rotation.eulerAngles.y);
+            float x = tempRelPos.x;
+            float y = tempRelPos.z;
+
+            //Thanks, wikipedia! https://en.wikipedia.org/wiki/Rotation_matrix
+            Vector3 relPos = new Vector3(x * Mathf.Cos(theta) - y * Mathf.Sin(theta), tempRelPos.y, x * Mathf.Sin(theta) + y * Mathf.Cos(theta));
+            Towers[i].transform.localPosition = relPos / transform.localScale.x;//Assuming uniform scaling
+            if (TiltTowers)
+            {
+                Towers[i].transform.localEulerAngles = new Vector3(0, 90, AttachPoints[i].transform.localEulerAngles.x + SheaveScriptLeft.RotationParent.transform.localEulerAngles.x * (HalfTilt ? 0.5f : 1));
+            }
+            else
+            {
+                Towers[i].transform.localEulerAngles = new Vector3(0, 90, 0);
+            }
+        }
+
+        foreach (TowerScript tower in Towers)
+        {
+            tower.Reset();
+        }
+
     }
 
     private void InitializeTowers(int numberTowers)

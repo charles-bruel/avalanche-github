@@ -27,5 +27,10 @@ namespace PrecompiledExtensions
                 return toReturn;
             }
         }
+
+        public virtual List<Transform> GetWirePoints()
+        {
+            return new List<Transform>();
+        }
     }
 }

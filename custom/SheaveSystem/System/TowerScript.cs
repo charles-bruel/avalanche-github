@@ -9,6 +9,7 @@ public class TowerScript : MonoBehaviour
     public List<GameObject> PaddingObjects;
     public Transform BaseItems;
     public Transform Target;
+    public Transform WirePoint;
 
     void Update()
     {

@@ -88,5 +88,24 @@ namespace SheaveSystem
             }
             TowerAssembly.Reset();
         }
+
+        public override List<Transform> GetWirePoints()
+        {
+            if (TowerAssembly != null && TowerAssembly.Towers != null)
+            {
+                List<Transform> to_return = new List<Transform>(TowerAssembly.Towers.Count);
+                for (int i = 0; i < TowerAssembly.Towers.Count; i++)
+                {
+                    if (TowerAssembly.Towers[i].isActiveAndEnabled && TowerAssembly.Towers[i].WirePoint != null)
+                        to_return.Add(TowerAssembly.Towers[i].WirePoint);
+                }
+                to_return.Reverse();
+                return to_return;
+            }
+            else
+            {
+                return base.GetWirePoints();
+            }
+        }
     }
 }
