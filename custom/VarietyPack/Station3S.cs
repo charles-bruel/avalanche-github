@@ -16,14 +16,15 @@ namespace VarietyPack
 
         void Start()
         {
-            right = LoadedData[0].GetComponent<SaddleControl>();
-            left = LoadedData[1].GetComponent<SaddleControl>();
         }
 
         public void Initialize()
         {
             if (Initialized) return;
             Initialized = true;
+
+            right = LoadedData[0].GetComponent<SaddleControl>();
+            left = LoadedData[1].GetComponent<SaddleControl>();
 
             supports = new GameObject[IntParameters[1]];
             for(int i = 0;i < IntParameters[1];i ++)
@@ -34,6 +35,8 @@ namespace VarietyPack
 
         public override void OnParameterUpdate(Transform otherTower, Transform stationPos)
         {
+            Initialize();
+
             float horizontalDistance, verticalDistance;
             Vector3 temp = otherTower.position - stationPos.position;
             verticalDistance = temp.y;
@@ -51,8 +54,6 @@ namespace VarietyPack
             left.TargetAngle = -angle;
             right.Apply();
             left.Apply();
-
-            Initialize();
 
             for(int i = 0; i < IntParameters[1]; i++)
             {

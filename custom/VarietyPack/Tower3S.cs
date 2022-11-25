@@ -10,14 +10,20 @@ namespace VarietyPack
         public SaddleControl right;
         public SaddleControl left;
 
-        void Start()
+        public bool Initialized;
+
+        private void Initalize()
         {
+            if (Initialized) return;
+            Initialized = true;
+
             right = LoadedData[0].GetComponent<SaddleControl>();
             left = LoadedData[1].GetComponent<SaddleControl>();
         }
 
         public override void OnParameterUpdate(Transform prevTower, Transform nextTower, Transform currentTowerPos)
         {
+            Initalize();
             float horizontalDistance, verticalDistance;
             Vector3 temp = nextTower.position - prevTower.position;
             verticalDistance = temp.y;
