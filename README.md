@@ -13,7 +13,7 @@ The folder structure is as follows:
  * instanced - code for instanced rendering changes. By @chazzvader
  * pictures - pictures for this README. By @chazzvader
  * src - code integrated directly into the game. Incomplete for legal reasons. By @chazzvader
-
+ * website - code for the website. By @!Tea
 Screenshots:<br>
 Before:
 ![Alt text](https://github.com/charles-bruel/avalanche-github/blob/master/pictures/ps1o.PNG?raw=true)
